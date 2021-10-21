@@ -13,7 +13,12 @@ add_action('wp_head', 'my_custom_fonts');
 function my_custom_fonts() {
   echo '<style>
   
-/* POST TITLE & NOTES... JUST CAUSE I LIKE TO TWEAK IT */
+.oxy-stock-content-styles {
+    padding-left: 20px;
+    padding-right:20px;
+}
+
+/* POST TITLE & NOTES */
 .edit-post-visual-editor__post-title-wrapper {
 background-color: #eaeaea; /* light grey*/
 padding: 0 20px 10px;
@@ -36,6 +41,7 @@ height: auto !important;
 font-size: 36px !important;
 padding: 10px 0 !important;
 }
+
 .edit-post-visual-editor__post-title-wrapper .wp-block.wp-block.editor-post-title {
 max-width: 100%;
 padding:0px !important;
@@ -52,18 +58,20 @@ ADD PADDING TO OUTER FOR RESPONSIVE SIZES
 */
 .oxy-stock-content-styles {
     width:100%;
-    padding-left: 20px;
-    padding-right:20px;
 }
 
 /* PUT IN CENTER FOR ANYTHING NOT ALIGNFULL */
 .wp-block,
+.wp-block-columns,
 .wp-block[data-align="full"] .wp-block.wp-block-group,
+.wp-block[data-align="full"] .wp-block.wp-block-columns,
 .oxy-stock-content>*,
 .oxy-stock-content-styles>*,
+.oxy-stock-content>.alignwide,
+.oxy-stock-content-styles>.alignwide,
 .oxy-stock-content>.alignfull .wp-block-group,
 .ct-inner-content>*,
-.ct-inner-content>.alignfull .wp-block-group {
+.ct-inner-content>.alignfull .wp-block-columns {
 max-width: 1080px;
 margin-top: 28px;
 margin-bottom: 28px;
@@ -74,12 +82,15 @@ margin-right: auto;
 /* MAKE ALIGN-WIDE A BIT BIGGER */
 .wp-block[data-align="wide"],
 .wp-block[data-align="wide"] .wp-block,
+.wp-block-columns[data-align="wide"],
 .wp-block[data-align="full"] .wp-block[data-align="wide"],
+.wp-block-columns.alignwide,
 .oxy-stock-content>.alignwide,
 .oxy-stock-content-styles>.alignwide,
 .oxy-stock-content>.alignfull .wp-block-group.alignwide,
 .ct-inner-content>.alignwide,
-.ct-inner-content>.alignfull .wp-block-group.alignwide {
+.ct-inner-content>.alignfull .wp-block-group.alignwide,
+.ct-inner-content>.alignfull .wp-block-columns.alignwide {
     max-width: 1280px;
     margin-left  : auto;
     margin-right : auto;
@@ -89,7 +100,9 @@ margin-right: auto;
 .wp-block[data-align="full"],
 .wp-block[data-align="full"]>.wp-block-group,
 .wp-block[data-align="full"] .wp-block,
-.wp-block[data-align="full"] > .wp-block-group__inner-container > .wp-block {
+.wp-block[data-align="full"] > .wp-block-group__inner-container > .wp-block,
+.wp-block-columns.alignfull,
+.ct-inner-content>.alignfull .wp-block-columns.alignfull {
     margin-left  : calc( -100% / 2 + 100% / 2 );
     margin-right : calc( -100% / 2 + 100% / 2 );
     max-width: 100%;
@@ -113,21 +126,26 @@ margin-right: auto;
    width: 100%;
    height:auto !important;
 }
-/* JUST CAUSE BGS IN GUTENBERG NEED PADDING */
+
 .has-background {
   padding: 1rem 2rem;
 }
 
+
 @media screen and (max-width:1120px) {
+
 }
 
 @media screen and (max-width:980px) {
+
 }
 
 @media screen and (max-width:720px) {
+
 }
 
 @media screen and (max-width:480px) {
+
 }
 
 </style>';
